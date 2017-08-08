@@ -1,0 +1,14 @@
+<h1>All your tasks</h1>
+
+<%= link_to 'Add a task', new_task_path %>
+
+<% @tasks.each do |task| %>
+<div>
+  <h2><%= task.name %></h2>
+  <p><%= task.done ? "[x]" : "[ ]" %></p>
+  <%= link_to 'delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to 'modify', edit_task_path(task)%>
+  <%= link_to 'details', task_path(task) %>
+  <%= link_to 'mark as done', done_task_path(task), method: :patch %>
+</div>
+<% end %>
